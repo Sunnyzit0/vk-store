@@ -4,6 +4,8 @@ body{background:#090a09}
 .site-header:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--lime),transparent);opacity:.25}
 .brand-mark{border-color:var(--lime);box-shadow:0 0 20px rgba(57,255,20,.12)}
 .brand-mark strong{background:linear-gradient(135deg,#efffd9,var(--lime));-webkit-background-clip:text;background-clip:text}
+.brand-image{overflow:hidden;transform:none;padding:0;background:#071b0d}
+.brand-image img{width:100%;height:100%;object-fit:cover}
 .nav-whatsapp,.button-primary,.floating-whatsapp{box-shadow:var(--neon-shadow)}
 .nav-whatsapp:hover{background:rgba(57,255,20,.1);box-shadow:0 0 28px rgba(57,255,20,.3)}
 .menu-toggle{display:none;border:1px solid rgba(57,255,20,.5);background:transparent;color:var(--lime);width:42px;height:42px;place-items:center;cursor:pointer}
