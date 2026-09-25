@@ -15,7 +15,8 @@ body{background:#090a09}
 .hero-grid,.hero-marquee{position:relative;z-index:1}
 .hero-ring{border-color:rgba(57,255,20,.4);box-shadow:0 0 0 35px rgba(57,255,20,.045),0 0 0 85px rgba(57,255,20,.025),0 0 55px rgba(57,255,20,.12)}
 .button-primary{background:var(--lime);color:#070907}.button-primary:hover{box-shadow:0 0 34px rgba(57,255,20,.4)}
-.button svg,.text-link svg,.nav-whatsapp svg{width:16px;height:16px;stroke-width:2.4}
+.button svg,.text-link svg,.nav-whatsapp svg,.footer-links svg,.hero-marquee svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.4}
+.price-arrow svg,.product-arrow svg,.card-overlay svg{stroke:currentColor;stroke-width:2.2}
 .text-link{border-color:var(--lime)}
 .hero-marquee{background:rgba(9,10,9,.25)}
 .hero-marquee b{color:var(--lime)}
