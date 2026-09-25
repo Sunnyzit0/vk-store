@@ -1,3 +1,17 @@
+if (!location.hash) {
+  let userInteracted = false;
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((evt) => {
+    window.addEventListener(evt, () => { userInteracted = true; }, { once: true, passive: true });
+  });
+  window.addEventListener('load', () => {
+    [200, 600, 1200].forEach((delay) => {
+      setTimeout(() => {
+        if (!userInteracted && window.scrollY > 40) window.scrollTo(0, 0);
+      }, delay);
+    });
+  });
+}
+
 function setHidden(el, hidden) {
   if (!el) return;
   if (hidden) el.setAttribute('hidden', '');
