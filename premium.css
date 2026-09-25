@@ -49,7 +49,6 @@ body{background:#090a09}
 .rating span{color:var(--lime-dark)}
 .testimonial:hover,.photo-placeholder:hover{transform:translateY(-5px);box-shadow:0 18px 30px rgba(0,0,0,.12)}
 .about-section{background:radial-gradient(circle at 90% 10%,rgba(57,255,20,.09),transparent 34%),#171c18}
-.map-pin{display:grid;place-items:center}.map-pin svg{width:17px;height:17px}
 .faq-section{background:#0f1210}.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px}.faq-intro p{color:#8d988d;max-width:300px;margin:26px 0}.faq-list{border-top:1px solid var(--line)}.faq-list details{border-bottom:1px solid var(--line);padding:0}.faq-list summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;min-width:0;min-height:44px;padding:22px 0;font:600 19px var(--display);letter-spacing:-.03em}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary svg{color:var(--lime);width:18px;flex:0 0 18px;transition:transform .25s}.faq-list details[open] summary svg{transform:rotate(45deg)}.faq-list p{color:#99a399;max-width:600px;font-size:14px;padding:0 45px 22px 0;margin:0}.faq-list strong{color:var(--lime-soft);font-weight:500}
 .site-footer{border-top:1px solid rgba(57,255,20,.14)}
 .floating-whatsapp{background:var(--lime);min-height:44px}.floating-whatsapp svg{width:19px;height:19px;stroke-width:2.3}.floating-whatsapp:after{content:'';position:absolute;inset:-5px;border:1px solid rgba(57,255,20,.35);border-radius:35px;animation:pulse 2.2s ease-in-out 3}

@@ -1,6 +1,3 @@
-const year = document.querySelector('#year');
-if (year) year.textContent = new Date().getFullYear();
-
 function setHidden(el, hidden) {
   if (!el) return;
   if (hidden) el.setAttribute('hidden', '');
