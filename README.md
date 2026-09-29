@@ -1,24 +1,36 @@
-# VK Store
+# VK Store — site 2.0
 
-Protótipo de landing page premium para a VK Store, loja de celulares e assistência técnica em Padre Bernardo-GO.
+Site da VK Store (celulares, acessórios e assistência técnica em Padre Bernardo - GO).
 
-## Executar
+**Stack:** Vite + React + TypeScript, Tailwind CSS v4, Motion (Framer Motion). O HTML é pré-renderizado no build (SEO e carregamento rápido) e hidratado no navegador.
 
-Abra `index.html` no navegador. O projeto é estático, mobile-first e não exige build ou dependências locais.
+## Rodar
 
-## Antes da publicação (pendências que dependem do cliente)
+```bash
+npm install
+npm run dev       # desenvolvimento em http://localhost:5173
+npm run build     # gera dist/ (pré-renderizado)
+npm run preview   # serve o dist/ em http://localhost:4173
+```
 
-- Confirmar o endereço da loja e inserir o iframe/link real do Google Maps (estrutura já comentada em `index.html`, seção `#sobre`).
-- Confirmar o horário de funcionamento aos domingos.
-- Inserir preços, condições e formas de pagamento aceitas.
-- Confirmar a campanha ativa do mês (seção `#promocoes`).
-- Substituir os depoimentos e as duas fotos placeholder de clientes em `#clientes` por conteúdo real autorizado pelo cliente (Instagram tem material nos destaques "Feedbacks" e "Clientes").
-- Confirmar se a nota 5.0 exibida no hero e em `#clientes` reflete uma avaliação real (Google/Instagram) antes de publicar.
-- Trocar as fotos duplicadas: iPhone 17 Pro Max (hero + card de produto), Redmi Note 15 (card de categoria + card de produto), Starlink (card de categoria + depoimento) — os pontos estão marcados com `<!-- TODO -->` em `index.html`.
-- Adicionar CNPJ e razão social no rodapé.
-- Confirmar o domínio definitivo do site e atualizar as tags `og:url` / `og:image` em `index.html` para a URL absoluta publicada.
+## Onde mexer
 
-## Notas técnicas
+| O quê | Onde |
+| --- | --- |
+| **Todo texto, produto, contato, horário** | `src/data/content.ts` (único arquivo de conteúdo) |
+| Mostrar depoimentos | `content.flags.showTestimonials` + preencher `content.testimonials.items` |
+| Seções da página | `src/components/sections/` |
+| Cores, tipografia, raios | tokens em `src/styles/index.css` (`@theme`) |
+| Fotos | ver abaixo |
 
-- Todas as imagens usadas no site foram convertidas para WebP (ver `assets/img/`); os arquivos JPG/PNG originais foram mantidos fora do HTML/CSS apenas como fonte em alta resolução.
-- Ícones via Lucide, carregado de CDN com versão fixa (não `@latest`), com fallback SVG inline no botão de menu caso o CDN falhe.
+## Fotos
+
+1. Coloque o original (JPG/PNG, quanto maior melhor) em `media-src/` com nome em minúsculas e hífens, ex.: `xiaomi-realme.jpg`.
+2. Rode `npm run images` — gera AVIF/WebP em vários tamanhos em `public/img/` e atualiza `src/data/images.gen.ts`.
+3. No `content.ts`, troque o `media` do item para `{ kind: 'photo', name: 'xiaomi-realme', alt: '...' }`.
+
+Onde ainda não há foto, o site mostra um placeholder (gradiente + silhueta de aparelho) com o nome de arquivo sugerido.
+
+## Pendências de conteúdo
+
+Estão marcadas com `TODO:` em `src/data/content.ts` (endereço, domingo, preços, garantia, reparos na hora, depoimentos, CNPJ, domínio).
