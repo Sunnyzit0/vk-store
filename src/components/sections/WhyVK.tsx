@@ -1,5 +1,5 @@
-import { m, useScroll, useTransform, type MotionValue } from 'motion/react';
-import { useRef } from 'react';
+import { useMotionValueEvent, useScroll } from 'motion/react';
+import { useRef, useState } from 'react';
 import { content } from '../../data/content';
 import { useReducedMotionSafe } from '../../lib/useReducedMotionSafe';
 import { Reveal } from '../ui/Reveal';
@@ -9,19 +9,15 @@ const { why } = content;
 const lines = why.lines.map((line) => line.split(' '));
 const total = lines.flat().length;
 
-// Opacidade mínima da palavra "apagada": 0.38 ainda passa 3:1 (AA para texto grande) sobre #1d1d1f.
-const DIM = 0.38;
-
-/** Palavra que "acende" quando o scroll passa pela sua fatia. */
-function Word({ word, k, progress }: { word: string; k: number; progress: MotionValue<number> }) {
-  const opacity = useTransform(progress, [k / total, (k + 1) / total], [DIM, 1]);
-  return <m.span style={{ opacity }}>{word} </m.span>;
-}
-
 export function WhyVK() {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotionSafe();
+  const [lit, setLit] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.8', 'end 0.45'] });
+
+  // O scroll só conta quantas palavras já acenderam; o "acender" é transição CSS (GPU),
+  // então não há trabalho por frame no celular.
+  useMotionValueEvent(scrollYProgress, 'change', (p) => setLit(Math.round(p * total)));
 
   let k = 0;
   return (
@@ -35,10 +31,12 @@ export function WhyVK() {
             <p key={li} className="mb-[0.18em] text-balance">
               {words.map((word) => {
                 const index = k++;
-                return reduce ? (
-                  <span key={index}>{word} </span>
-                ) : (
-                  <Word key={index} word={word} k={index} progress={scrollYProgress} />
+                // Opacidade mínima 0.38: ainda passa 3:1 (AA para texto grande) sobre #1d1d1f.
+                const on = reduce || index < lit;
+                return (
+                  <span key={index} className={`transition-opacity duration-500 ease-out ${on ? 'opacity-100' : 'opacity-[0.38]'}`}>
+                    {word}{' '}
+                  </span>
                 );
               })}
             </p>
