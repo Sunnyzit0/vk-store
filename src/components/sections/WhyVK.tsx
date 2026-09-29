@@ -3,7 +3,8 @@ import { useRef, useState } from 'react';
 import { content } from '../../data/content';
 import { useReducedMotionSafe } from '../../lib/useReducedMotionSafe';
 import { Reveal } from '../ui/Reveal';
-import { container } from '../ui/Section';
+import { MediaView } from '../ui/Media';
+import { container, railInset } from '../ui/Section';
 
 const { why } = content;
 const lines = why.lines.map((line) => line.split(' '));
@@ -43,6 +44,30 @@ export function WhyVK() {
           ))}
         </div>
       </div>
+
+      {/* Fotos reais de clientes: trilho arrastável no celular, grade no desktop. */}
+      <div className={`${container} mt-20 md:mt-28`}>
+        <Reveal as="p" className="text-eyebrow font-semibold text-vk">
+          {why.gallery.eyebrow}
+        </Reveal>
+      </div>
+      <Reveal delay={0.08}>
+        <ul
+          aria-label={why.gallery.eyebrow}
+          className={`no-scrollbar mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain ${railInset} md:mx-auto md:grid md:max-w-[1120px] md:grid-cols-4 md:gap-4 md:overflow-visible md:px-6`}
+        >
+          {why.gallery.photos.map((photo, i) => (
+            <li key={i} className="w-[68vw] max-w-[300px] shrink-0 snap-start md:w-auto md:max-w-none">
+              <figure>
+                <div className="aspect-[4/5] overflow-hidden rounded-card bg-night-3">
+                  <MediaView media={photo.media} sizes="(max-width: 768px) 68vw, 270px" />
+                </div>
+                <figcaption className="mt-3 text-[0.9375rem] text-ink-3">{photo.caption}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   );
 }

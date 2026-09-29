@@ -83,6 +83,51 @@ function PinnedStory() {
   );
 }
 
+// Enquadramento da foto da bancada em cada card do mobile: mesma imagem (baixada uma vez),
+// zoom e ponto focal diferentes. Transform estático — nada anima durante a rolagem.
+const crops = [
+  { scale: 1, origin: '50% 50%' }, // bancada inteira
+  { scale: 2.1, origin: '47% 58%' }, // aparelho aberto
+  { scale: 2.2, origin: '28% 72%' }, // tela
+  { scale: 2.4, origin: '63% 49%' }, // placa
+  { scale: 1.9, origin: '60% 12%' }, // lupa iluminada
+];
+
+/**
+ * Mobile: cards que empilham conforme a rolagem. É só `position: sticky` (CSS puro, sem JavaScript
+ * no scroll), então acompanha o dedo com a fluidez da rolagem nativa do celular.
+ */
+function StackedStory() {
+  return (
+    <ol className={`${container} mt-12`}>
+      {service.steps.map((step, i) => (
+        <li
+          key={step.id}
+          className="sticky mb-5 last:mb-0"
+          style={{ top: `calc(4.5rem + ${i * 0.75}rem)` }}
+        >
+          <article className="overflow-hidden rounded-card bg-night-3 shadow-[0_-16px_40px_-8px_rgba(0,0,0,0.85)] ring-1 ring-inset ring-white/10">
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="absolute inset-0" style={{ transform: `scale(${crops[i % crops.length].scale})`, transformOrigin: crops[i % crops.length].origin }}>
+                <MediaView media={service.media} sizes="(max-width: 768px) 200vw, 100vw" />
+              </div>
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-night-3 via-night-3/20 to-transparent" />
+              <span aria-hidden className="absolute right-5 top-4 text-[3.5rem] font-semibold leading-none tracking-[-0.05em] text-white/15 tabular-nums">
+                {pad(i)}
+              </span>
+            </div>
+            <div className="px-6 pb-7 pt-1">
+              <p className="text-eyebrow font-semibold text-vk">{step.eyebrow}</p>
+              <h3 className="mt-2 text-[1.875rem] font-semibold leading-[1.08] tracking-[-0.03em] text-balance text-snow">{step.title}</h3>
+              <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-3">{step.body}</p>
+            </div>
+          </article>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /** Versão estática para quem prefere menos movimento. */
 function StaticStory() {
   return (
@@ -118,7 +163,18 @@ export function Service() {
         </SectionHeading>
       </div>
 
-      {reduce ? <StaticStory /> : <PinnedStory />}
+      {reduce ? (
+        <StaticStory />
+      ) : (
+        <>
+          <div className="md:hidden">
+            <StackedStory />
+          </div>
+          <div className="hidden md:block">
+            <PinnedStory />
+          </div>
+        </>
+      )}
 
       <div className={`${container} pb-24 pt-16 md:pb-40 md:pt-24`}>
         <Reveal>

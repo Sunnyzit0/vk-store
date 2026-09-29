@@ -90,7 +90,7 @@ export interface Content {
     whatsappMessage: string;
   };
   categories: { eyebrow: string; title: string; items: Category[]; also: { title: string; body: string } };
-  why: { eyebrow: string; lines: string[] };
+  why: { eyebrow: string; lines: string[]; gallery: { eyebrow: string; photos: { media: Media; caption: string }[] } };
   testimonials: { eyebrow: string; title: string; items: Testimonial[] };
   visit: { eyebrow: string; title: string; media: Media };
   finalCta: { title: string[]; subtitle: string; cta: string; whatsappMessage: string };
@@ -294,12 +294,12 @@ export const content: Content = {
         title: 'Xiaomi e Realme',
         subtitle: 'Redmi, POCO e Realme',
         items: 'Redmi, POCO e Realme',
-        // TODO: foto própria da categoria (a do Redmi já está nos Destaques).
+        // Mesma foto do card POCO nos Destaques — trocar se chegar uma foto própria de Xiaomi/Realme.
         media: {
-          kind: 'placeholder',
-          suggestedFile: 'media-src/xiaomi-realme.jpg',
-          alt: 'Smartphones Xiaomi e Realme',
-          tone: 'graphite',
+          kind: 'photo',
+          name: 'poco-x8-pro',
+          alt: 'POCO X8 Pro erguido em frente à fachada da VK Store',
+          position: '50% 40%',
         },
         whatsappMessage: 'Olá! Quero ver os modelos Xiaomi e Realme disponíveis.',
         size: 'tall',
@@ -352,6 +352,28 @@ export const content: Content = {
       'Conserto na hora.',
       'Gente de perto, aqui em Padre Bernardo.',
     ],
+    // Fotos reais de clientes na loja (as mesmas já publicadas no site anterior).
+    gallery: {
+      eyebrow: 'Clientes VK',
+      photos: [
+        {
+          caption: 'iPhone 17 Pro',
+          media: { kind: 'photo', name: 'cliente-iphone', alt: 'Cliente sorrindo com caixas de iPhone 17 Pro na loja da VK Store' },
+        },
+        {
+          caption: 'JBL Boombox 4',
+          media: { kind: 'photo', name: 'boombox-reinaldo', alt: 'Cliente fazendo joinha ao lado de uma JBL Boombox 4 na VK Store' },
+        },
+        {
+          caption: 'Fone sem fio',
+          media: { kind: 'photo', name: 'kaidi', alt: 'Cliente mostrando fone sem fio em frente ao espelho iluminado', position: '50% 60%' },
+        },
+        {
+          caption: 'JBL Boombox 4',
+          media: { kind: 'photo', name: 'boombox-aline', alt: 'Atendente e cliente com a caixa da JBL Boombox 4 na VK Store', position: '50% 35%' },
+        },
+      ],
+    },
   },
 
   testimonials: {
