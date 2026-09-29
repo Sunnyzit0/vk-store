@@ -1,17 +1,5 @@
 // Gerado por scripts/optimize-images.mjs — não edite à mão.
 export const imageManifest = {
-  "accessories": {
-    "width": 1672,
-    "height": 941,
-    "widths": [
-      480,
-      640,
-      828,
-      1080,
-      1280,
-      1672
-    ]
-  },
   "apple-hands": {
     "width": 2160,
     "height": 2700,
@@ -22,6 +10,18 @@ export const imageManifest = {
       1080,
       1280,
       1920
+    ]
+  },
+  "boombox-4-cores": {
+    "width": 1440,
+    "height": 1715,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1280,
+      1440
     ]
   },
   "boombox-4": {
@@ -60,6 +60,53 @@ export const imageManifest = {
       1920
     ]
   },
+  "capinhas": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1200
+    ]
+  },
+  "cliente-celular": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1280,
+      1920
+    ]
+  },
+  "cliente-fam": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1280,
+      1920
+    ]
+  },
+  "cliente-iphone-2": {
+    "width": 2729,
+    "height": 2729,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1280,
+      1920
+    ]
+  },
   "cliente-iphone": {
     "width": 1440,
     "height": 1561,
@@ -70,6 +117,18 @@ export const imageManifest = {
       1080,
       1280,
       1440
+    ]
+  },
+  "copos-termicos": {
+    "width": 2160,
+    "height": 2880,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1280,
+      1920
     ]
   },
   "fam-storm": {
@@ -154,6 +213,18 @@ export const imageManifest = {
       1080,
       1280,
       1440
+    ]
+  },
+  "redmi-note-15-pro": {
+    "width": 1320,
+    "height": 1566,
+    "widths": [
+      480,
+      640,
+      828,
+      1080,
+      1280,
+      1320
     ]
   },
   "redmi-note-15": {

@@ -12,6 +12,8 @@ const WIDTHS = [480, 640, 828, 1080, 1280, 1920];
 // Cortes pontuais para fotos com borda indesejada.
 const CROPS = {
   'iphone-17-pro-max': { left: 130, top: 0, right: 0, bottom: 0 },
+  // Capa de Reels: remove o texto "Lançamento / Redmi Note 15 Pro+" do topo.
+  'redmi-note-15-pro': { left: 0, top: 780, right: 0, bottom: 0 },
 };
 
 await mkdir(OUT, { recursive: true });

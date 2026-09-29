@@ -25,7 +25,7 @@ export interface Category {
   items: string;
   media: Media;
   whatsappMessage: string;
-  size: 'hero' | 'tall' | 'wide' | 'square';
+  size: 'hero' | 'tall' | 'half' | 'square';
 }
 
 export interface ServiceStep {
@@ -202,9 +202,9 @@ export const content: Content = {
         tagline: 'Som de respeito, em várias cores.',
         media: {
           kind: 'photo',
-          name: 'boombox-4',
-          alt: 'Atendente da VK Store com caixas JBL Boombox 4 em preto e laranja',
-          position: '40% 60%',
+          name: 'boombox-4-cores',
+          alt: 'JBL Boombox 4 laranja e marrom com as caixas, na frente da VK Store',
+          position: '50% 70%',
         },
         whatsappMessage: 'Olá! Quero saber da JBL Boombox 4.',
       },
@@ -294,12 +294,11 @@ export const content: Content = {
         title: 'Xiaomi e Realme',
         subtitle: 'Redmi, POCO e Realme',
         items: 'Redmi, POCO e Realme',
-        // Mesma foto do card POCO nos Destaques — trocar se chegar uma foto própria de Xiaomi/Realme.
         media: {
           kind: 'photo',
-          name: 'poco-x8-pro',
-          alt: 'POCO X8 Pro erguido em frente à fachada da VK Store',
-          position: '50% 40%',
+          name: 'redmi-note-15-pro',
+          alt: 'Caixa do Redmi Note 15 Pro+ na mão de um atendente da VK Store',
+          position: '40% 40%',
         },
         whatsappMessage: 'Olá! Quero ver os modelos Xiaomi e Realme disponíveis.',
         size: 'tall',
@@ -329,16 +328,31 @@ export const content: Content = {
         items: 'Capinhas, películas, power banks, carregadores, fones e mais',
         media: {
           kind: 'photo',
-          name: 'accessories',
-          alt: 'Smartphone, caixa de som, fones, power bank, capinha e antena sobre fundo escuro',
+          name: 'capinhas',
+          alt: 'Cliente mostrando o celular com capinha em frente à parede de capinhas da VK Store',
+          position: '50% 30%',
         },
         whatsappMessage: 'Olá! Quero ver os acessórios disponíveis.',
-        size: 'wide',
+        size: 'half',
+      },
+      {
+        id: 'copos',
+        title: 'Copos e garrafas',
+        subtitle: 'Térmicos, para o dia todo',
+        items: 'Copos e garrafas térmicas',
+        media: {
+          kind: 'photo',
+          name: 'copos-termicos',
+          alt: 'Cliente com copos térmicos Stanley na VK Store',
+          position: '50% 40%',
+        },
+        whatsappMessage: 'Olá! Quero ver os copos e garrafas térmicas disponíveis.',
+        size: 'half',
       },
     ],
     also: {
       title: 'Também tem Motorola e Samsung.',
-      body: 'E ainda: baterias, copos e garrafas térmicas, estabilizador com LED, mini câmera, espelho camarim e projetor sem fio.',
+      body: 'E ainda: baterias, estabilizador com LED, mini câmera, espelho camarim e projetor sem fio.',
     },
   },
 
@@ -371,6 +385,22 @@ export const content: Content = {
         {
           caption: 'JBL Boombox 4',
           media: { kind: 'photo', name: 'boombox-aline', alt: 'Atendente e cliente com a caixa da JBL Boombox 4 na VK Store', position: '50% 35%' },
+        },
+        {
+          caption: 'Celular novo',
+          media: { kind: 'photo', name: 'cliente-celular', alt: 'Cliente com o celular novo ao lado de um atendente da VK Store', position: '50% 40%' },
+        },
+        {
+          caption: 'JBL Boombox 4',
+          media: { kind: 'photo', name: 'boombox-4', alt: 'Cliente abraçada a uma JBL Boombox 4 entre as caixas na VK Store', position: '55% 55%' },
+        },
+        {
+          caption: 'Caixa de som FAM',
+          media: { kind: 'photo', name: 'cliente-fam', alt: 'Cliente segurando a caixa de som FAM na VK Store', position: '50% 35%' },
+        },
+        {
+          caption: 'iPhone novo',
+          media: { kind: 'photo', name: 'cliente-iphone-2', alt: 'Cliente com o iPhone novo e a sacola da VK Store ao lado de um atendente' },
         },
       ],
     },

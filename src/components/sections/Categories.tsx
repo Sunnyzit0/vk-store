@@ -11,12 +11,13 @@ const layout: Record<Category['size'], { cell: string; sizes: string }> = {
   hero: { cell: 'col-span-2 row-span-2', sizes: '(max-width: 768px) 100vw, 560px' },
   tall: { cell: 'col-span-1 row-span-2', sizes: '(max-width: 768px) 50vw, 280px' },
   square: { cell: 'col-span-1 row-span-1', sizes: '(max-width: 768px) 50vw, 280px' },
-  wide: { cell: 'col-span-2 row-span-2 md:col-span-4 md:row-span-1', sizes: '(max-width: 1120px) 100vw, 1120px' },
+  // Mobile: dois cards altos lado a lado. Desktop: dois cards largos dividindo a última linha.
+  half: { cell: 'col-span-1 row-span-2 md:col-span-2 md:row-span-1', sizes: '(max-width: 768px) 50vw, 560px' },
 };
 
 function CategoryCard({ item, index }: { item: Category; index: number }) {
   const { cell, sizes } = layout[item.size];
-  const big = item.size === 'hero' || item.size === 'wide';
+  const big = item.size === 'hero';
   return (
     <Reveal delay={(index % 3) * 0.08} className={cell}>
       <a
@@ -28,7 +29,7 @@ function CategoryCard({ item, index }: { item: Category; index: number }) {
         <div className="absolute inset-0 -z-10 transition-transform duration-[1200ms] ease-[var(--ease-vk)] group-hover:scale-[1.05]">
           <MediaView media={item.media} sizes={sizes} />
         </div>
-        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/10 via-50% to-black/40" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-black/85 via-black/25 via-45% to-black/40" />
         <h3 className={`font-semibold tracking-[-0.03em] ${big ? 'text-[1.75rem] leading-[1.05] md:text-[2.5rem]' : 'text-[1.25rem] leading-tight md:text-[1.5rem]'}`}>
           {item.title}
         </h3>
