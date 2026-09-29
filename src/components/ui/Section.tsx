@@ -2,7 +2,8 @@ import type { ReactNode } from 'react';
 import { Reveal } from './Reveal';
 
 /** Largura padrão do conteúdo. */
-export const container = 'mx-auto w-full max-w-[1120px] px-5 md:px-6';
+export const container =
+  'mx-auto w-full max-w-[1120px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] md:pl-[max(1.5rem,env(safe-area-inset-left))] md:pr-[max(1.5rem,env(safe-area-inset-right))]';
 
 /** Padding que alinha um trilho horizontal com o container, deixando-o sangrar até a borda. */
 export const railInset = 'px-[max(1.25rem,calc((100vw-1120px)/2+1.5rem))] scroll-px-[max(1.25rem,calc((100vw-1120px)/2+1.5rem))]';

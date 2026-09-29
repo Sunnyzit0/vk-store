@@ -21,6 +21,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const pendingHash = useRef<string | null>(null);
   const { scrollY } = useScroll();
 
   // Some ao descer, volta ao subir.
@@ -32,15 +33,26 @@ export function Nav() {
 
   useEffect(() => {
     if (!open) return;
-    const root = document.documentElement;
-    root.style.overflow = 'hidden';
-    menuRef.current?.querySelector('a')?.focus();
+    // Trava a rolagem de um jeito que também funciona no Safari do iPhone
+    // (overflow: hidden no <html> sozinho não segura o scroll por toque).
+    const { body } = document;
+    const y = window.scrollY;
+    Object.assign(body.style, { position: 'fixed', top: `-${y}px`, left: '0', right: '0' });
+    menuRef.current?.querySelector('a')?.focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
     window.addEventListener('keydown', onKey);
     return () => {
-      root.style.overflow = '';
+      Object.assign(body.style, { position: '', top: '', left: '', right: '' });
+      window.scrollTo({ top: y, behavior: 'instant' });
+      // Se o menu fechou por um link, rola até a seção depois de destravar.
+      const target = pendingHash.current;
+      pendingHash.current = null;
+      if (target) {
+        document.querySelector(target)?.scrollIntoView();
+        history.pushState(null, '', target);
+      }
       window.removeEventListener('keydown', onKey);
-      toggleRef.current?.focus();
+      toggleRef.current?.focus({ preventScroll: true });
     };
   }, [open]);
 
@@ -53,7 +65,7 @@ export function Nav() {
         transition={{ duration: 0.5, ease }}
       >
         <div className="border-b border-white/[0.08] bg-black/70 backdrop-blur-xl backdrop-saturate-150">
-          <nav aria-label="Principal" className="mx-auto flex h-14 max-w-[1120px] items-center justify-between px-5 md:h-12 md:px-6">
+          <nav aria-label="Principal" className="mx-auto flex h-14 max-w-[1120px] items-center justify-between pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] md:h-12 md:pl-[max(1.5rem,env(safe-area-inset-left))] md:pr-[max(1.5rem,env(safe-area-inset-right))]">
             <Logo />
             <ul className="hidden items-center gap-8 md:flex">
               {nav.map((item) => (
@@ -99,7 +111,7 @@ export function Nav() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            className="fixed inset-0 z-40 flex flex-col bg-black px-8 pb-10 pt-24 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col overflow-y-auto overscroll-contain bg-black px-8 pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-24 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.1 } }}
@@ -116,7 +128,11 @@ export function Nav() {
                 >
                   <a
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      pendingHash.current = item.href;
+                      setOpen(false);
+                    }}
                     className="block py-2 text-[2.25rem] font-semibold tracking-[-0.035em] text-snow transition-colors hover:text-white"
                   >
                     {item.label}

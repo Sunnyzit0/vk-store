@@ -2,13 +2,12 @@ import type { ReactNode } from 'react';
 import { whatsappLink } from '../../lib/links';
 import { ChevronRight, WhatsApp } from './icons';
 
-type Variant = 'vk' | 'dark' | 'light' | 'glass';
+type Variant = 'vk' | 'dark' | 'light';
 
 const variants: Record<Variant, string> = {
   vk: 'bg-vk text-black hover:bg-[#74ea52]',
   dark: 'bg-ink text-white hover:bg-black',
   light: 'bg-white text-ink hover:bg-snow',
-  glass: 'bg-white/10 text-white ring-1 ring-inset ring-white/20 backdrop-blur-md hover:bg-white/15',
 };
 
 const sizes = {

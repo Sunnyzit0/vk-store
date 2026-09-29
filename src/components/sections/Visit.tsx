@@ -72,7 +72,7 @@ export function Visit() {
                 <span className="absolute inset-0 animate-ping rounded-full bg-vk/60 motion-reduce:animate-none" />
                 <span className="relative block size-4 rounded-full border-[3px] border-white bg-vk-deep shadow-lg" />
               </span>
-              <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3.5 py-1.5 text-[0.8125rem] font-medium text-ink shadow-sm backdrop-blur">
+              <span className="absolute left-4 top-4 rounded-full bg-white px-3.5 py-1.5 text-[0.8125rem] font-medium text-ink shadow-sm">
                 Abrir no Google Maps
               </span>
             </a>

@@ -24,13 +24,14 @@
   --color-vk-deep: #1f7a1f;
 
   /* Escala tipográfica */
-  --text-display: clamp(3.75rem, 15vw, 8.5rem);
+  /* Os títulos escalam pela largura E pela altura (svh): no celular deitado não estouram a tela. */
+  --text-display: clamp(3rem, min(15.5vw, 15svh), 8.5rem);
   --text-display--line-height: 0.92;
   --text-display--letter-spacing: -0.055em;
-  --text-headline: clamp(2.75rem, 8vw, 6rem);
+  --text-headline: clamp(2.125rem, min(9vw, 9.5svh), 6rem);
   --text-headline--line-height: 0.98;
   --text-headline--letter-spacing: -0.045em;
-  --text-title: clamp(2rem, 5vw, 3.5rem);
+  --text-title: clamp(1.75rem, min(5.5vw, 7svh), 3.5rem);
   --text-title--line-height: 1.04;
   --text-title--letter-spacing: -0.035em;
   --text-subtitle: clamp(1.5rem, 3vw, 2.25rem);
@@ -68,8 +69,12 @@
     letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
     overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+  a,
+  button {
+    touch-action: manipulation;
   }
   ::selection {
     background: var(--color-vk);

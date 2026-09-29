@@ -45,7 +45,7 @@ export function Hero() {
       </m.div>
 
       <div className="relative -mt-6 flex flex-1 items-end justify-center md:-mt-10">
-        <m.div style={{ y: imageY, scale: imageScale }} className="relative w-[210%] max-w-none sm:w-[150%] md:w-full md:max-w-[1200px]">
+        <m.div style={{ y: imageY, scale: imageScale }} className="relative will-change-transformw-[210%] max-w-none sm:w-[150%] md:w-full md:max-w-[1200px]">
           <div className="hero-media-in edge-fade">
             <div className="aspect-[1672/940]">
               <MediaView media={hero.media} sizes="(max-width: 640px) 210vw, (max-width: 768px) 150vw, 100vw" priority />

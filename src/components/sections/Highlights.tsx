@@ -24,7 +24,7 @@ function ProductCard({ product }: { product: Product }) {
             href={whatsappLink(product.whatsappMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex h-9 w-fit items-center rounded-full bg-white/15 px-4 text-[0.875rem] font-medium ring-1 ring-inset ring-white/25 backdrop-blur-md transition-colors after:absolute after:inset-0 after:content-[''] hover:bg-white/25"
+            className="mt-5 inline-flex h-9 w-fit items-center rounded-full bg-black/35 px-4 text-[0.875rem] font-medium ring-1 ring-inset ring-white/30 transition-colors after:absolute after:inset-0 after:content-[''] hover:bg-black/55"
             draggable={false}
           >
             {highlights.cta}

@@ -37,7 +37,7 @@ function CategoryCard({ item, index }: { item: Category; index: number }) {
         </p>
         <span
           aria-hidden
-          className="mt-auto grid size-9 place-self-end place-items-center rounded-full bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-md transition-colors duration-300 group-hover:bg-vk group-hover:text-black group-hover:ring-transparent"
+          className="mt-auto grid size-9 place-self-end place-items-center rounded-full bg-black/35 ring-1 ring-inset ring-white/30 transition-colors duration-300 group-hover:bg-vk group-hover:text-black group-hover:ring-transparent"
         >
           <ArrowUpRight className="size-4" />
         </span>

@@ -94,7 +94,7 @@ export interface Content {
   testimonials: { eyebrow: string; title: string; items: Testimonial[] };
   visit: { eyebrow: string; title: string; media: Media };
   finalCta: { title: string[]; subtitle: string; cta: string; whatsappMessage: string };
-  footer: { credits: string };
+  footer: { watermark: string };
 }
 
 export const content: Content = {
@@ -376,7 +376,6 @@ export const content: Content = {
   },
 
   footer: {
-    // TODO: CNPJ e razão social.
-    credits: 'Site por Arthur',
+    watermark: 'By Arthur',
   },
 };

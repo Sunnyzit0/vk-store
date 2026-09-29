@@ -5,7 +5,7 @@ import { container } from '../ui/Section';
 
 const { brand, contact, location, nav, service, footer } = content;
 
-const linkClass = 'text-ink-2 transition-colors hover:text-ink hover:underline hover:underline-offset-2';
+const linkClass = 'inline-block py-1 text-ink-2 transition-colors hover:text-ink hover:underline hover:underline-offset-2';
 
 export function Footer() {
   const columns = [
@@ -67,7 +67,7 @@ export function Footer() {
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title}>
               <p className="font-semibold text-ink">{col.title}</p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-2 space-y-0.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <a href={l.href} className={linkClass} {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
@@ -103,12 +103,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-black/10 pt-6 text-[0.75rem] text-ink-2 sm:flex-row sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {brand.name} · {location.city} - {location.state}
-          </p>
-          <p>{footer.credits}</p>
-        </div>
+        <p className="border-t border-black/10 pt-6 text-center text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-ink-2 select-none">
+          {footer.watermark}
+        </p>
       </div>
     </footer>
   );
